@@ -4,8 +4,9 @@ function PokemonCard({id, name, img, types}) {
     const idStr = id.toString().padStart(4,'0')
   return (
     <div className="card">
-        <h2>#{idStr} {name}</h2>
-        <img src={img} alt={name} />
+        <h1 className='number'>#{idStr}</h1>
+        <h2 className='name'> {name}</h2>
+        <img src={img} alt={name} className='sprite'/>
         <div className="typeContainer">
         <div className={"type " + types[0]}>
             {types[0]}

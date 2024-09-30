@@ -21,6 +21,7 @@ function Pokedex({query}) {
                         types: data.types.map((entry)=>entry.type.name)
                     }
                     pkmnList.push(pkmn);
+                    
                 }
                 setPokemon(pkmnList);
             }
@@ -31,13 +32,16 @@ function Pokedex({query}) {
         getPokemon();
     }, [])
 
-  return (pokemon?
-  <div className="cardContainer">
-    {pokemon.map((pkmn)=>
-        <PokemonCard {...pkmn}/>
-    )}
-  </div>:
-  <h1>Loading...</h1>)
+    function loading(){
+        return <h1>Loading...</h1>
+    }
+    function loaded(){
+        return  <div className="cardContainer">
+                    {pokemon.map((pkmn)=> <PokemonCard {...pkmn}/>)}
+                </div>
+    }
+
+  return (pokemon?loaded():loading())
   
 }
 
